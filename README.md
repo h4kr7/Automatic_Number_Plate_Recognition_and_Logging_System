@@ -1,4 +1,4 @@
-# Number Plate Recognition
+# Vehicle License Plate Detection
 
 This project utilizes OpenCV and Tesseract OCR to detect and recognize vehicle number plates in real-time using a webcam. Detected number plates are saved along with the timestamp in an Excel file.
 
