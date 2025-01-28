@@ -7,12 +7,14 @@ from openpyxl import Workbook, load_workbook
 # Specify the path to the Tesseract executable
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-frameWidth = 640   # Frame Width
-frameHeight = 480  # Frame Height
-
+# Load the pre-trained Haar Cascade for detecting vehicle number plates
 plateCascade = cv2.CascadeClassifier("haarcascade_russian_plate_number.xml")
 minArea = 500
 
+frameWidth = 640
+frameHeight = 480
+
+# Initialize the webcam
 cap = cv2.VideoCapture(0)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
@@ -27,6 +29,7 @@ formats = [
     r"^\d{2}[A-Z]{2}\d{4}[A-Z]{1}$",  # Format: 2 numbers, 2 letters, 4 numbers, 1 letter
 ]
 
+# Function to format the number plate
 def format_plate(text):
     text = re.sub(r"[^A-Za-z0-9]", "", text)
     for pattern in formats:
@@ -34,6 +37,7 @@ def format_plate(text):
             return text
     return None
 
+# Function to process each frame
 def process_frame(img, sheet):
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     numberPlates = plateCascade.detectMultiScale(imgGray, 1.1, 4)
@@ -56,8 +60,11 @@ def process_frame(img, sheet):
 
     return img
 
+# Main function
 def main():
     file_path = "NumberPlates.xlsx"
+
+    # Load the existing workbook or create a new one if it doesn't exist
     try:
         workbook = load_workbook(file_path)
         sheet = workbook.active
@@ -75,6 +82,7 @@ def main():
         img = process_frame(img, sheet)
         cv2.imshow("Result", img)
 
+        # Allow user to press 's' to save the image
         if cv2.waitKey(1) & 0xFF == ord("s"):
             cv2.imwrite(f".\\IMAGES\\{str(count)}.jpg", img)
             cv2.rectangle(img, (0, 200), (640, 300), (0, 255, 0), cv2.FILLED)

@@ -1,12 +1,12 @@
-# Vehicle License Plate Detection
+# Automatic Number Plate Recognition and Logging System
 
-This project utilizes OpenCV and Tesseract OCR to detect and recognize vehicle number plates in real-time using a webcam. Detected number plates are saved along with the timestamp in an Excel file.
+This project leverages OpenCV and Tesseract OCR to automatically recognize vehicle license plates in real-time using a webcam. The recognized plates are saved to an Excel file with date and time information. Additionally, the system allows users to capture images of the detected plates.
 
 ## Features
-- Real-time number plate detection using a webcam.
-- Number plate recognition using Tesseract OCR.
-- Saves detected number plates with timestamp in an Excel file.
-- Supports multiple number plate formats.
+- Real-time license plate detection from webcam feed.
+- Support for multiple license plate formats using regular expressions.
+- Logs recognized license plates with timestamps to an Excel file.
+- Option to save images of captured license plates.
 
 ## Supported Formats
 The following formats are supported for number plate recognition:
@@ -33,3 +33,9 @@ The following formats are supported for number plate recognition:
 3. **Download Haar Cascade**:\
     Download haarcascade_russian_plate_number.xml\
     Ensure you have the haarcascade_russian_plate_number.xml file in the project directory.
+
+## Example of Detected Plates:
+![Example of Detected Plates](https://github.com/h4kr7/Automatic_Number_Plate_Recognition_and_Logging_System/blob/main/Images/image1.png)
+## Data Stored in Excel:
+The detected license plate numbers, along with the current date and time, are logged into an Excel file.
+![Data Stored in Excel](https://github.com/h4kr7/Automatic_Number_Plate_Recognition_and_Logging_System/blob/main/Images/image2.png)
