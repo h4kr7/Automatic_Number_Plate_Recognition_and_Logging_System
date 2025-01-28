@@ -38,4 +38,5 @@ The following formats are supported for number plate recognition:
 ![Example of Detected Plates](https://github.com/h4kr7/Automatic_Number_Plate_Recognition_and_Logging_System/blob/main/Images/image1.png)
 ## Data Stored in Excel:
 The detected license plate numbers, along with the current date and time, are logged into an Excel file.
+
 ![Data Stored in Excel](https://github.com/h4kr7/Automatic_Number_Plate_Recognition_and_Logging_System/blob/main/Images/image2.png)
